@@ -105,7 +105,8 @@ Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process.
 ### Use the model to make predictions on new images
 I downloaded 5 new images in wikipedia in this link:
 https://en.wikipedia.org/wiki/Road_signs_in_Germany
-
+<br>
+<img src="./newpic/1.jpg" width="32" height="32"><img src="./newpic/2.jpg" width="32" height="32">
 ![alt text][image3 =32x32]
 ![alt text][image4]
 ![alt text][image5]
