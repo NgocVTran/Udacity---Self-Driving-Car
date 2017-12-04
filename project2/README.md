@@ -54,7 +54,7 @@ jupyter notebook Traffic_Sign_Classifier.ipynb
 
 ## Writeup
 
-### 0. Load the Data
+###  Load the Data, Explore, summarize and visualize the data set
 The first step of this project is loading and visualize the data to understand how was it built.
 
 The size of training set is: 34799
@@ -64,11 +64,33 @@ The shape of a traffic sign image is: (32,32,3)
 The number of unique classes is: 43
 
 After that, I visualize the data set:
+
 ![alt text][image1]
 
-And showing some data sample:
+And showing some data sample, then normalize the training data. I choose to do a quick way for it, by divide all data to 255, then shuffle it.
+
 ![alt text][image2]
 
+There are still so many way to playing with this data set, like usng Gaussian Blur to reduce image noise, or to optains a smooth grayscale image, or to increase the number of images in training data set.
+
+### Design, train and test a model architecture
+My model has the following structure:
+
+| Layer         		|     Description	        					|
+|:---------------------:|:---------------------------------------------:|
+| Input         		| 32x32x3 RGB image (normalized)				|
+| Convolution 1     	| 1x1 stride, VALID padding, output = 26x26x8 	|
+| RELU			|												|
+| Max pooling	      	| 2x2 stride, VALID padding, output = 13x13x8   |
+| Convolution 2  	    | 1x1 stride, VALID padding, output = 8x8x22    |
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, VALID padding, output = 4x4x22    |
+| Flatten				| output = 352									|
+| Fully connected		| input = 352, output = 150       	            |
+| RELU					|												|
+| Fully connected		| input = 150, output = 84       	            |
+| RELU					|												|
+| Fully connected		| input = 84, output = 43       	            |
 
 
 
