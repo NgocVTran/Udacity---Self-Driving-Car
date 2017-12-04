@@ -49,10 +49,27 @@ git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
 cd CarND-Traffic-Sign-Classifier-Project
 jupyter notebook Traffic_Sign_Classifier.ipynb
 ```
+[image1]: ./writeup_pic/visualize_data.png "Visualization"
+[image2]: ./writeup_pic/show_sample.png "Sample Data"
 
-### Requirements for Submission
-Follow the instructions in the `Traffic_Sign_Classifier.ipynb` notebook and write the project report using the writeup template as a guide, `writeup_template.md`. Submit the project code and writeup document.
+## Writeup
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### 0. Load the Data
+The first step of this project is loading and visualize the data to understand how was it built.
+
+The size of training set is: 34799
+The size of the validation set is: 4410
+The size of test set is: 12630
+The shape of a traffic sign image is: (32,32,3)
+The number of unique classes is: 43
+
+After that, I visualize the data set:
+![alt text][image1]
+
+And showing some data sample:
+![alt text][image2]
+
+
+
+
 
