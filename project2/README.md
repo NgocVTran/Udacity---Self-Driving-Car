@@ -51,6 +51,12 @@ jupyter notebook Traffic_Sign_Classifier.ipynb
 ```
 [image1]: ./writeup_pic/visualize_data.png "Visualization"
 [image2]: ./writeup_pic/show_sample.png "Sample Data"
+[image3]: ./newpic/1.jpg
+[image4]: ./newpic/2.jpg
+[image5]: ./newpic/3.jpg
+[image6]: ./newpic/4.jpg
+[image7]: ./newpic/5.jpg
+
 
 ## Writeup
 
@@ -92,6 +98,18 @@ My model has the following structure:
 | RELU					|												|
 | Fully connected		| input = 84, output = 43       	            |
 
+This model was modified from LeNet model. The last output layer has 43 nodes, for 43 sign classes. I have trained this model on my CPU, with 20 epoch it reaches 93.6% accuracy on validation set, 92.3% on test set, and it takes 30min. of training.
 
+Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process. 
 
+### Use the model to make predictions on new images
+I downloaded 5 new images in wikipedia in this link:
+https://en.wikipedia.org/wiki/Road_signs_in_Germany
 
+![alt text][image3]
+![alt text][image4]
+![alt text][image5]
+![alt text][image6]
+![alt text][image7]
+
+And label them manually, test them with my model and have 80% accuracy. For a small sample, 80% is a good one.
