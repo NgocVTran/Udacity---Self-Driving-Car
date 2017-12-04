@@ -106,7 +106,7 @@ Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process.
 I downloaded 5 new images in wikipedia in this link:
 https://en.wikipedia.org/wiki/Road_signs_in_Germany
 
-![alt text][image3]
+![alt text][image3 =32x32]
 ![alt text][image4]
 ![alt text][image5]
 ![alt text][image6]
