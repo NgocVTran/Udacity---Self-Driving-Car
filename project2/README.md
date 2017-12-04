@@ -106,11 +106,6 @@ Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process.
 I downloaded 5 new images in wikipedia in this link:
 https://en.wikipedia.org/wiki/Road_signs_in_Germany
 <br>
-<img src="./newpic/1.jpg" width="32" height="32"><img src="./newpic/2.jpg" width="32" height="32">
-![alt text][image3 =32x32]
-![alt text][image4]
-![alt text][image5]
-![alt text][image6]
-![alt text][image7]
+<img src="./newpic/1.jpg" width="100" height="100"><img src="./newpic/2.jpg" width="100" height="100"><img src="./newpic/3.jpg" width="100" height="100"><img src="./newpic/4.jpg" width="100" height="100"><img src="./newpic/5.jpg" width="100" height="100">
 
 And label them manually, test them with my model and have 80% accuracy. For a small sample, 80% is a good one.
