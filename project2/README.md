@@ -102,10 +102,13 @@ This model was modified from LeNet model. The last output layer has 43 nodes, fo
 
 Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process. 
 
-### Use the model to make predictions on new images
+### Use the model to make predictions on new images, analyze the softmax probabilities of the new images
 I downloaded 5 new images in wikipedia in this link:
 https://en.wikipedia.org/wiki/Road_signs_in_Germany
 <br>
 <img src="./newpic/1.jpg" width="100" height="100"><img src="./newpic/2.jpg" width="100" height="100"><img src="./newpic/3.jpg" width="100" height="100"><img src="./newpic/4.jpg" width="100" height="100"><img src="./newpic/5.jpg" width="100" height="100">
 
 And label them manually, test them with my model and have 80% accuracy. For a small sample, 80% is a good one.
+
+The sofrmax probabilities of the new images was also calculated in jupyter notebook file.
+
