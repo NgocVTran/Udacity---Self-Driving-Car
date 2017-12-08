@@ -35,7 +35,6 @@ Camera Calibration
 Calculate Camera Calibration using chessboard images and test with some image:
 
 * Before:
-<img scr="camera_cal/calibration1.jpg" width="500px">
 ![alt text][image1]
 * After:
 ![alt text][image2]
