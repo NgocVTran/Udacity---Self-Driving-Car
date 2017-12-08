@@ -18,7 +18,7 @@ The goals / steps of this project are the following:
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
 [image1]: ./camera_cal/calibration1.jpg "Before"
-[image2]: ./output_images/camera_cal_outp/calibration1.jpg "After"
+[image2]: ./output_images/camera_cal_outp/0.jpg "After"
 [image3]: ./output_images/before_after.png
 [image4]: ./output_images/threshold.png
 [image5]: ./output_images/birdview.png
@@ -35,6 +35,7 @@ Camera Calibration
 Calculate Camera Calibration using chessboard images and test with some image:
 
 * Before:
+<img scr="camera_cal/calibration1.jpg" width="500px">
 ![alt text][image1]
 * After:
 ![alt text][image2]
@@ -69,6 +70,8 @@ Get the grayscale image of bird view, then take the histogram of this image. Fin
 
 Histogram:
 ![alt text][image7]
+
+
 
 
 
