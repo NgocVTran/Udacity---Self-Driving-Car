@@ -73,11 +73,16 @@ After that, I visualize the data set:
 
 ![alt text][image1]
 
-And showing some data sample, then normalize the training data. I choose to do a quick way for it, by divide all data to 255, then shuffle it.
+And showing some data sample, then normalize the training data. I choose to do a quick way for it, by divide all data to 255, then shuffle it. 
+
+### Note
+The reason why I chose to normalize training data before run the model is because it helps us to avoid feature scaling. In our training process, we need to calculate activation outputs by multiply the weight with initial units and adding bias, then we use backpropagation with gradients to train the model. If each features have a similar range so our gradients won't go out of control. 
+
+So we can think about image contrast. A different in brightness of images and gives a large range of image pixel. A brighter image can have higher pixel values and the darker image has lower ones, so range of pixel is in [0, 255]. By divide all data to 255, we just transform all image pixel to range of [0, 1].
 
 ![alt text][image2]
 
-There are still so many way to playing with this data set, like usng Gaussian Blur to reduce image noise, or to optains a smooth grayscale image, or to increase the number of images in training data set.
+There are still so many way to playing with this data set, like using Gaussian Blur to reduce image noise, or to optains a smooth grayscale image, or to increase the number of images in training data set.
 
 ### Design, train and test a model architecture
 My model has the following structure:
@@ -102,6 +107,13 @@ This model was modified from LeNet model. The last output layer has 43 nodes, fo
 
 Adam Optimizer (tf.train.AdamOptimizer()) was applied in training process. 
 
+### Note
+The first model I have tried is LeNet, because it's the most common model I have learnt and playing around with, LeNet is also really good at image classification. I only modified the last layer to pass with 43 classes of traffic signs, change the batch size to 200 and learning rate to 0.005, and it gives a 50,1% accuracy on validation set at the first epoch. And after training 10-20 epochs, it stucks on 65%, but still have 96% on training test, which is sign of over fitting.
+
+So I start to modify the model by change the number of Fully connected layer from 400 to 352, reduce the next layer nodes to nearly half of 352/2 ~ 150 nodes, keep moving to the next layer, it has 84 nodes ~ 150/2 etc. (Convolution layer outputs was changed too). I also reduce the batch size to 100 and learning rate to 0.001. 
+
+The first epoch gives 80% accuracy on validation test which was a good start, and after 10 epochs it reaches 91%. So I decided to increase epoch to 20 and reach 93,6% on validation set.
+
 ### Use the model to make predictions on new images, analyze the softmax probabilities of the new images
 I downloaded 5 new images in wikipedia in this link:
 https://en.wikipedia.org/wiki/Road_signs_in_Germany
@@ -112,3 +124,9 @@ And label them manually, test them with my model and have 80% accuracy. For a sm
 
 The sofrmax probabilities of the new images was also calculated in jupyter notebook file.
 
+### Note
+This new step was added in the end of jujyper notebook file.
+
+New 5 images has been downloaded and placed in folder './newpic2'. It all really hard to detect after resize to 32x32, and the model doesn't has any right detection. 
+
+A solution for this maybe using Gaussian Blur to optain a smooth grayscale image of halftone print, or some some other algorithm to get better zoom and enhanced input image.
