@@ -24,11 +24,10 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/birdview.png
 [image6]: ./output_images/grayscale.png
 [image7]: ./output_images/histogram.png
-
-[image5]: ./output_images/birdview.png
-[image5]: ./output_images/birdview.png
-[image5]: ./output_images/birdview.png
-
+[image8]: ./output_images/slide_window.png
+[image9]: ./output_images/slide_window2.png
+[image10]: ./output_images/lane_detection.png
+[image11]: ./output_images/test_images_outp/test5.jpg
 
 Camera Calibration
 ---
@@ -67,13 +66,47 @@ Perspective transform was working as expected by drawing the src and dst points 
 Get the grayscale image of bird view, then take the histogram of this image. Find the peak of the left and right halves of the histogram, these will be the starting point for the left and right lines.
 ![alt text][image6]
 
+
 Histogram:
+
 ![alt text][image7]
 
 
+With this histogram I am adding up the pixel values along each column in the image. Use a sliding window and fit a polynomial to those pixel positions, by placed around the line centers, to find and follow the lines up to the top of the frame.
+![alt text][image8]
+
+![alt text][image9]
 
 
+Draw the found lane lines onto a binary warped image, then unwarp and overlay on the original image.
+
+![alt text][image10]
+
+* Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+
+Calculate the radius of curvature based on pixel values (function 'get_curvature()'), _but our images are in pixel space and need to be converted into meters. 
+
+Asume that the camera is in the middle of car, then I calculate center of left and right lane. Lane deviation is calculated by half of subtraction of center lane minus center of image's width.
+
+* Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+
+![alt text][image11]
+
+All the images result are on this folder:
+'output_images/test_images_outp'
+
+It was also shown on jupyter notebook file code, too.
 
 
+Pipeline (video)
+---
+Same as project 1, I applied this algorithm for all frames of the video. Video result can be found on folder:
+'output_images/project_video.mp4'
 
 
+Discussion
+---
+There are still much things to do to improve the result of challenge video:
+'output_images/challenge_video.mp4'
+
+This algorithm detect the wrong left lane when there is a shadow on the road, or when the car runs on sunny. I was experimented by trying another threshold, color space but I still can't reach the solution. Any advance is greatly appreciated, then I should improve this algorithm in future.
