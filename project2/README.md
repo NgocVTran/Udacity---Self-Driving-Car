@@ -49,8 +49,9 @@ git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
 cd CarND-Traffic-Sign-Classifier-Project
 jupyter notebook Traffic_Sign_Classifier.ipynb
 ```
-[image1]: ./writeup_pic/visualize_data.png "Visualization"
-[image2]: ./writeup_pic/show_sample.png "Sample Data"
+[image1]: ./camera_cal/calibration1.jpg "Before"
+[image2]: ./output_images_camera_cal_outp/calibration1.jpg "After"
+
 [image3]: ./newpic/1.jpg
 [image4]: ./newpic/2.jpg
 [image5]: ./newpic/3.jpg
