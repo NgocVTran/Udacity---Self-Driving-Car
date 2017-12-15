@@ -43,6 +43,7 @@ This model gives an impressive result with 99% accuracy on test set. The color s
 Sliding Window Search apply on test image and corresponding heatmaps
 ---
 Restricted area of sliding window is from 400px to 680px in width and increase the window size +20 pixel each time, if window size too small can increase the number of image must to be detected. In case there is a wrong detection, the heat image will looks like below:
+
 ![alt text][image3]
 
 Therefore, in each time we draw a detected window on mask image, we just "add heat" (+=1) for all pixels within windows where a positive detection is reported. That's how we made a heat image.
