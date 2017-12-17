@@ -32,8 +32,12 @@ The following resources can be found in this github repository:
 * video.py
 * README.md
 * Behavioral-Cloning.ipynb
+* model_10_epochs.h5
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QJ3R5j6arOY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 
 Files Submitted & Code Quality
