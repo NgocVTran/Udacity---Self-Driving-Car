@@ -10,31 +10,14 @@ In this project, you will use what you've learned about deep neural networks and
 
 We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
-
-This README file describes how to output the video in the "Details About Files In This Directory" section.
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/432/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
 
 The Project
 ---
 The goals / steps of this project are the following:
-* Use the simulator to collect data of good driving behavior 
-* Design, train and validate a model that predicts a steering angle from image data
-* Use the model to drive the vehicle autonomously around the first track in the simulator. The vehicle should remain on the road for an entire loop around the track.
+* Use the simulator to collect data of good driving behavior
+* Build, a convolution neural network in Keras that predicts steering angles from images
+* Train and validate the model with a training and validation set
+* Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
 ### Dependencies
@@ -47,79 +30,106 @@ The lab enviroment can be created with CarND Term1 Starter Kit. Click [here](htt
 The following resources can be found in this github repository:
 * drive.py
 * video.py
-* writeup_template.md
+* README.md
+* Behavioral-Cloning.ipynb
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
 
-## Details About Files In This Directory
 
-### `drive.py`
+Files Submitted & Code Quality
+---
 
-Usage of `drive.py` requires you have saved the trained model as an h5 file, i.e. `model.h5`. See the [Keras documentation](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model) for how to create this file using the following command:
-```sh
-model.save(filepath)
-```
+* model.py containing the script to create and train the model
+* drive.py for driving the car in autonomous mode
+* model.h5 containing a trained convolution neural network
+* writeup_report.md or writeup_report.pdf summarizing the results
 
-Once the model has been saved, it can be used with drive.py using this command:
+[image1]: ./model.png
 
-```sh
-python drive.py model.h5
-```
 
-The above command will load the trained model and use the model to make predictions on individual images in real-time and send the predicted angle back to the server via a websocket connection.
 
-Note: There is known local system's setting issue with replacing "," with "." when using drive.py. When this happens it can make predicted steering values clipped to max/min values. If this occurs, a known fix for this is to add "export LANG=en_US.utf8" to the bashrc file.
+I use the model that published by autonomous vehicle team at NVIDIA. Here is paper link: 
+<a href="https://arxiv.org/pdf/1604.07316.pdf">NVIDIA Model</a>
 
-#### Saving a video of the autonomous agent
+I have tried to rebuild LeNet model, and some more suggestion from the course. But finally I picked NVIDIA Model. 
 
-```sh
-python drive.py model.h5 run1
-```
+#### Structure 10 epochs model without dropout:
+Layer (type)                 Output Shape              Param #   
+_________________________________________________________________
+lambda_1 (Lambda)            (None, 160, 320, 3)       0         
+_________________________________________________________________
+cropping2d_1 (Cropping2D)    (None, 65, 320, 3)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 31, 158, 24)       1824      
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 14, 77, 36)        21636     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 5, 37, 48)         43248     
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 3, 35, 64)         27712     
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 1, 33, 64)         36928     
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 2112)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1164)              2459532   
+_________________________________________________________________
+dense_2 (Dense)              (None, 100)               116500    
+_________________________________________________________________
+dense_3 (Dense)              (None, 50)                5050      
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 51        
+_________________________________________________________________
 
-The fourth argument, `run1`, is the directory in which to save the images seen by the agent. If the directory already exists, it'll be overwritten.
 
-```sh
-ls run1
+#### Training process for 10 epochs model:
+Train on 38572 samples, validate on 9644 samples 
+Epoch 1/10 
+38572/38572 [==============================] - 643s 17ms/step - loss: 0.0119 - val_loss: 0.0109 
+Epoch 2/10 
+38572/38572 [==============================] - 599s 16ms/step - loss: 0.0099 - val_loss: 0.0110 
+Epoch 3/10 
+38572/38572 [==============================] - 598s 16ms/step - loss: 0.0097 - val_loss: 0.0105 
+Epoch 4/10 
+38572/38572 [==============================] - 599s 16ms/step - loss: 0.0096 - val_loss: 0.0108 
+Epoch 5/10 
+38572/38572 [==============================] - 599s 16ms/step - loss: 0.0095 - val_loss: 0.0104 
+Epoch 6/10 
+38572/38572 [==============================] - 597s 15ms/step - loss: 0.0094 - val_loss: 0.0117 
+Epoch 7/10 
+38572/38572 [==============================] - 598s 16ms/step - loss: 0.0093 - val_loss: 0.0106 
+Epoch 8/10 
+38572/38572 [==============================] - 599s 16ms/step - loss: 0.0091 - val_loss: 0.0107 
+Epoch 9/10 
+38572/38572 [==============================] - 603s 16ms/step - loss: 0.0091 - val_loss: 0.0105 
+Epoch 10/10 
+38572/38572 [==============================] - 630s 16ms/step - loss: 0.0087 - val_loss: 0.0110
 
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_424.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_451.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_477.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_528.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_573.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_618.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_697.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_723.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_749.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_817.jpg
-...
-```
 
-The image file name is a timestamp of when the image was seen. This information is used by `video.py` to create a chronological video of the agent driving.
 
-### `video.py`
 
-```sh
-python video.py run1
-```
+This model was implemented by keras, with MSE as loss function and Adam algorithm as optimizer.
 
-Creates a video based on images found in the `run1` directory. The name of the video will be the name of the directory followed by `'.mp4'`, so, in this case the video will be `run1.mp4`.
+Model Structure:
 
-Optionally, one can specify the FPS (frames per second) of the video:
 
-```sh
-python video.py run1 --fps 48
-```
+![alt text][image1]
 
-Will run the video at 48 FPS. The default FPS is 60.
+All code was written in file 'model.py'. My jupyter notebook 'Behavioral-Cloning.ipynb' describes how this code running step by step.
 
-#### Why create a video
+Model Architecture and Training Strategy
+---
+The data is normalized in the model using a Keras lambda layer. Preprocessig data included three step (using with multiple cameras):
+* Data augmentation: flipping the images and steering measurements
+* Normalizing data and mean-centering data
+* Cropping images in Keras
 
-1. It's been noted the simulator might perform differently based on the hardware. So if your model drives succesfully on your machine it might not on another machine (your reviewer). Saving a video is a solid backup in case this happens.
-2. You could slightly alter the code in `drive.py` and/or `video.py` to create a video of what your model sees after the image is processed (may be helpful for debugging).
+## Improvement
+* The model_4p_dropout.h5 was trainned 4 epochs with dropout .50. The autonomous car keep staying on the left side and goes out of the road. So when I add dropout and increase number of epoch to 7, this model still have overfitting.
 
-### Tips
-- Please keep in mind that training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
+* Then I decided to remove dropout and increase epoch to 10, that's my last model. Although it stays in the middle of road, but sometimes fail in the corner that it must turns right. Because the training data of turning right is too little. 
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+Maybe I should collect more data by training the car goes counter-clockwise? Or start using flipping images? Or try another Model like VGG-16. There are still so many things I could do to improve my model.
+
+Any help will be appreciated!
 
