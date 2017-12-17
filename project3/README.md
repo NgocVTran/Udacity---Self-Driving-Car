@@ -37,7 +37,7 @@ The following resources can be found in this github repository:
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
 
 
-<a href="https://www.youtube.com/watch?v=QJ3R5j6arOY&feature=youtu.be" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+<a href="https://www.youtube.com/watch?v=QJ3R5j6arOY&feature=youtu.be" target="_blank"><img src="http://img.youtube.com/vi/QJ3R5j6arOY/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
