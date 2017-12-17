@@ -2,6 +2,12 @@
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
+
+
+[image1]: ./model.png
+[image2]: ./sample.png
+
+
 Overview
 ---
 This repository contains starting files for the Behavioral Cloning Project.
@@ -9,6 +15,23 @@ This repository contains starting files for the Behavioral Cloning Project.
 In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
 
 We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
+
+### Note: Change after reviewed
+* This NVIDIA Model has been used by autonomous driving car NVIDIA Team in their Self driving car. The neural network consists of five convolutional layers, and three fully connected layers.
+
+* Evaluation:
+First I trained this model for 15 epoch, but after 5 epochs, the validation loss was going to increase, so I decided to stop it early and re-train with only 5 epoch. But it still have overfitting problems, validation loss at 5th epochs is the same as at the 1st epoch.
+
+Therefore I tried to add dropout on each layers, it takes more times for training but it still get overfit. So the problem is not the number of epoch, I think. And I come back to my first model without dropout and train with 10 epochs only.
+
+All the models always increase validation loss value at half of training process. But my last model has the lowest validation loss, that's the different.
+
+* Training data:
+I used dataset from Udacity. The dataset was structed: first column is the image of center camera, 2nd and 3rd columns are left and right.
+
+Sample image data:
+
+![alt text][image2]
 
 
 The Project
@@ -49,8 +72,6 @@ Files Submitted & Code Quality
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network
 * writeup_report.md or writeup_report.pdf summarizing the results
-
-[image1]: ./model.png
 
 
 
