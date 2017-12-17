@@ -36,9 +36,10 @@ The following resources can be found in this github repository:
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
 
-
+Click on this image below to view my video in youtube. This video is too large to push to github.
+(Direct link <a href="https://www.youtube.com/watch?v=QJ3R5j6arOY&feature=youtu.be"> here </a>
 <a href="https://www.youtube.com/watch?v=QJ3R5j6arOY&feature=youtu.be" target="_blank"><img src="http://img.youtube.com/vi/QJ3R5j6arOY/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+alt="IMAGE ALT TEXT HERE" width="960" height="720" border="10" /></a>
 
 
 Files Submitted & Code Quality
