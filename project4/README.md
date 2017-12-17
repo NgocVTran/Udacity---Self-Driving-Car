@@ -28,6 +28,23 @@ The goals / steps of this project are the following:
 [image9]: ./output_images/slide_window2.png
 [image10]: ./output_images/lane_detection.png
 [image11]: ./output_images/test_images_outp/test5.jpg
+[image12]: ./sample1.png
+[image13]: ./sample2.png
+
+Change after last review:
+---
+* Some text correction: I keep using the HLS color space with S-channel and corrected my writeup text :) thx
+* You're right about my math form to calculate lane deviation. Actually I got the same form as your suggestion but wrong typing code :P
+First we need to calculate the center, which is alread 'div 2'. Then compute the distance between it and center of the image.
+* Correction of my bug: mixed height and width of image.
+* Try another color space:
+I have tried L-channel of LUV color space as your suggestion with some different thresholds, but the result when I apply it on test images was not good, although it generates a cleaner binary image.
+
+![alt text][image12]
+
+![alt text][image13]
+
+So I guess, I need to keep trying another color space, or find the way to combine them together to improve the algorithm.
 
 Camera Calibration
 ---
@@ -45,7 +62,7 @@ Pipeline (test images)
 
 * Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
-In 'thresholded_binary(undistorted_img)' function, convert the image to HLS color-space, then use the OpenCV Sobel function to get where the gradient of an image in the X direction. Then convert the image the HSV color-space with S-channel threshold
+In 'thresholded_binary(undistorted_img)' function, convert the image to HLS color-space, then use the OpenCV Sobel function to get where the gradient of an image in the X direction. Then convert the image the HLS color-space with S-channel threshold.
 ![alt text][image4]
 
 * Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
