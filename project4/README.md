@@ -31,7 +31,28 @@ The goals / steps of this project are the following:
 [image12]: ./sample1.png
 [image13]: ./sample2.png
 
-Change after last review:
+Change after last review (2):
+---
+Really exciting! I mixed 3 color space to get a better result:
+* S-channel of HLS with:
+    s_thresh_min = 190
+    s_thresh_max = 200
+* b-channel of Lab with:   
+    b_thresh_min = 155
+    b_thresh_max = 200
+* L-channel of LUV with:    
+    l_thresh_min = 215
+    l_thresh_max = 255
+The most important part is the way this 3 value combinated:
+    color_binary = np.dstack((np.zeros_like(l_binary), s_binary, b_binary))
+    combined_binary[(l_binary == 1) | (b_binary == 1)] = 1
+    
+Because S-channel from HLS color space can identify both white and yellow lane lines, but it won't get 100% of the pixel. L-channel from LUV  can get almost all the white lane lines, but ignore the yellow lines. b-channel from Lab color space good at identify yellow lines but ignore white lines.
+
+My video output is in folder: 'output_images/project_video.mp4'
+
+
+Change after last review (1):
 ---
 * Some text correction: I keep using the HLS color space with S-channel and corrected my writeup text :) thx
 * You're right about my math form to calculate lane deviation. Actually I got the same form as your suggestion but wrong typing code :P
